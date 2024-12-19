@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('lection').addEventListener('click', () => {
+        const tableContainer = document.getElementById('lection-container');
+        tableContainer.classList.toggle('show');
+      });
+
+      document.getElementById('practices').addEventListener('click', () => {
+        const tableContainerP = document.getElementById('practice-table');
+        tableContainerP.classList.toggle('show');
+      });
+
+      document.getElementById('practices').addEventListener('click', () => {
+        const tableContainerP = document.getElementById('practice-table2');
+        tableContainerP.classList.toggle('show');
+      });
+
+      (function () {
+        var address = document.querySelector('.addresss');
+
+        var observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            var entrySquare = entry.target.querySelector('.addresss');
+            if (typeof getCurrentAnimationPreference === 'function' && !getCurrentAnimationPreference()) {
+              return;
+            }
+
+            if (entry.isIntersecting) {
+              entrySquare.classList.add('address-animation');
+              return;
+            }
+
+            entrySquare.classList.remove('address-animation');
+          });
+        });
+
+        observer.observe(address);
+      })();
+    });
+
+    (function () {
+      var map = document.querySelector('.address-map');
+
+      var observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          var entrySquare = entry.target.querySelector('.address-map');
+          if (typeof getCurrentAnimationPreference === 'function' && !getCurrentAnimationPreference()) {
+            return;
+          }
+
+          if (entry.isIntersecting) {
+            entrySquare.classList.add('address-map-animation');
+            return;
+          }
+
+          entrySquare.classList.remove('address-map-animation');
+        });
+      });
+
+      observer.observe(map);
+    })();
+
+
+  </script>
+
+  <style>
+    html,
+    body {
+      background: black;
+      background-color: black;
+      color: white;
+      box-sizing: border-box;
+      position: fixed;
+      flex-direction: column;
+      overflow: auto;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+
+    .main-content {
+      overflow: scroll;
+      scroll-behavior: smooth;
+      scrollbar-color: inherit;
+      min-width: 15vw;
+      height: 2000px;
+      margin: 110px 40px;
+    }
+
+    .logo {
+      width: 75px;
+      margin: 20px;
+    }
+
+    header {
+      flex: 1;
+      width: 100%;
+      height: 110px;
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: black;
+      vertical-align: top;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      flex: 1;
+      margin-right: 30px;
+    }
+
+    li,
+    a {
+      list-style-type: none;
+      margin: 5px;
+      font-family: 'sinteca';
+      color: white;
+      outline: none;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    a:hover {
+      color: blue;
+    }
+
+    h1 {
+      font-family: 'uncage';
+      font-size: 80px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    h1::after {
+      content: attr(data-end);
+      color: blue;
+    }
+
+
+    .button-navigation {
+      margin-top: 20px;
+      width: 250px;
+    }
+
+    .button-navigation button {
+      display: block;
+      border: none;
+      background: none;
+      font-family: 'satoshi';
+      font-size: 42px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .button-navigation button:hover {
+      color: blue;
+    }
+
+    .button-a {
+      display: block;
+      border: none;
+      background: none;
+      font-family: 'satoshi';
+      font-size: 42px;
+      color: white;
+      cursor: pointer;
+      margin: 0;
+      text-align: left;
+    }
+
+    .table-container {
+      width: 100%;
+      display: inline-block;
+      padding-top: 30px;
+    }
+
+    .lection-container {
+      font-family: 'sinteca';
+      font-size: 15px;
+      padding: 20px;
+      border: 2px solid blue;
+      display: none;
+      float: right;
+      width: 50%;
+      background-color: transparent;
+      color: white;
+    }
+
+    .practice-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .practice-table {
+      font-family: 'sinteca';
+      font-size: 15px;
+      padding: 20px;
+      border: 2px solid blue;
+      display: none;
+      width: 50%;
+      background-color: transparent;
+      color: white;
+    }
+
+    .lection-container table,
+    .practice-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .practice-table th,
+    .practice-table td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .show {
+      display: block;
+    }
+
+    tr td:first-child {
+      color: blue;
+      padding-right: 20px;
+    }
+
+    .content-with-button {
+      display: flex;
+      height: 60vh;
+      width: 100%;
+      ;
+    }
+
+    @keyframes animation-address {
+      from {
+        margin-left: 100%;
+      }
+
+      to {
+        margin-left: 0%;
+      }
+    }
+
+    .addresss {
+      font-family: 'uncage';
+      font-size: 70px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    .address-animation {
+      opacity: 1;
+      animation: animation-address;
+      animation-duration: 2s;
+      animation-fill-mode: both;
+      animation-timing-function: linear;
+    }
+
+    .address-map {
+      display: block;
+      padding: 20px;
+      margin-top: 10px;
+      width: 100%;
+      height: 500px;
+      animation: map-animation;
+      animation-duration: 5s;
+      animation-fill-mode: both;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes map-animation {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .address-map-animation {
+      animation: map-animation;
+      animation-duration: 5s;
+      animation-fill-mode: both;
+      animation-timing-function: ease;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 2em;
+      padding: 2em;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .grid-item {
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 0.1em solid whitesmoke;
+      padding: 1em;
+      border-radius: 0.7em;
+      text-align: center;
+      font-size: 1.3em;
+      box-shadow: 0 5px 10px 2px rgba(255, 255, 255, 0.3);
+      transition: border-color 0.3s ease, transform 0.5s ease-in-out;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        height: 60px;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        margin: 0;
+        margin-top: 8px;
+        margin-left: 20px;
+      }
+
+      a {
+        margin: 0;
+      }
+
+      .main-content {
+        margin: 60px 40px;
+        height: auto;
+      }
+
+      h1 {
+        margin-top: 100px;
+        font-size: 40px;
+      }
+
+      .content-with-button {
+        display: none;
+      }
+
+      .addresss {
+        font-size: 50px;
+      }
+
+      .pdf-container {
+        display: none;
+      }
+
+      .grid-container {
+        width: 100px;
+        padding: 0;
+        gap: 1em;
+      }
+
+      .grid-item {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="test.html">
+      <img src="images/лого.png" alt="logo" class="logo">
+    </a>
+    <nav>
+      <li><a href="test.html">Home</a></li>
+    </nav>
+  </header>
+
+  <div class="main-content" id="main-content">
+    <div class="page-1">
+      <h1 data-end=".">FIRST TERM</h1>
+      <div class="content-with-button">
+        <div class="button-navigation">
+          <button id="lection">lection</button>
+          <button id="practices">practices</button>
+          <a class="button-a" href="#address">address</a>
+          <a class="button-a" href="#PDF">pdf</a>
+        </div>
+        <div class="table-container">
+          <table class="lection-container" id="lection-container">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Theme</th>
+                <th>Attendance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td>Basics of HTML</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>In-depth study of HTML</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td>Basics of working with CSS</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td>Adaptive layout. Flexbox and Grid Layout</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>5.</td>
+                <td>Bootstrap - working with the framework</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>6.</td>
+                <td>Basics of JavaScript</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>7.</td>
+                <td>Working with DOM and events in JavaScript</td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>8.</td>
+                <td>Introduction to GitHub and GitHub Pages</td>
+                <td><input type="checkbox"></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="practice-container">
+            <table class="practice-table" id="practice-table">
+              <thead>
+                <tr>
+                  <th>Number</th>
+                  <th>Topic</th>
+                  <th>Attendance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Basics of HTML</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Forms and buttons in HTML</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Tables and interactive elements in HTML</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Basics of working with CSS</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Working with CSS classes</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Working with grids and layout in HTML</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Responsive design</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Bootstrap</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="practice-table" id="practice-table2">
+              <thead>
+                <tr>
+                  <th>Number</th>
+                  <th>Topic</th>
+                  <th>Attendance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>9</td>
+                  <td>Basics of JavaScript</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Basic tasks in JS</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>DOM structure of applications and working with objects in JS</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>Embedding scripts</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>Debugging scripts</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>Animations and working with them</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>GitHub</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>Project defense</td>
+                  <td><input type="checkbox"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="addresss">
+      <h3 class="addresss" id="address">Address</h3>
+    </div>
+
+    <iframe class="address-map" id="address-map"
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3A57365ae1d14360df3bb8493277ad7d8c90d63900d0a69eab0d519c0590e8e00a&amp;source=constructor"
+      frameborder="0"></iframe>
+
+    <div class="pdf-container">
+      <div>
+        <h3 class="addresss" id="PDF">PDF</h3>
+      </div>
+      <object type="application/pdf" data="/ПР_3_HTML_Таблицы и мультимедиа.pdf" width="100%" height="700px"></object>
+    </div>
+  <div class="grid-container">
+    <a class="grid-item">HTML</a>
+    <a class="grid-item">CSS</a>
+    <a class="grid-item">JavaScript</a>
+    <a class="grid-item">Figma</a>
+    <a class="grid-item">React</a>
+    <a class="grid-item">TypeScript</a>
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+[*]
+insert_final_newline = true
+trim-trailing-whitespace = true
+charset = utf-8
+end_of_line = lf
+indent_size = space
+indent_size = 4
+
+[{*.css; *.html}]
+indent_size = 2
+
+[*.js]
+indent_size = 2
+
+[*.md]
+insert_final_newline = false

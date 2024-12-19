@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<script>
+  const button = document.querySelector('button');
+  const imgContainer = document.querySelector('.img-container');
+  const imgContainer2 = document.querySelector('.img-container-2');
+
+  button.addEventListener('click', () => {
+    imgContainer.style.display = 'none';
+    imgContainer2.style.display = 'flex';
+  });
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: black;
+    margin: 0;
+  }
+
+
+  .main-content {
+    padding: 10px;
+    position: relative;
+  }
+
+  h1 {
+    font-family: 'sex pistols';
+    color: #989898;
+    font-size: 100px;
+    margin: 0;
+    display: inline-block;
+    position: absolute;
+    top: 25vh;
+    left: 20vh;
+    z-index: 1;
+  }
+
+  h1::after {
+    content: attr(data-end);
+    color: blue;
+  }
+
+  p {
+    font-family: 'satoshi';
+    color: #989898;
+    font-size: 40px;
+    position: absolute;
+    z-index: 1;
+    top: 33vh;
+    left: 22vh;
+  }
+
+  .img-animation {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .img-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: fixed;
+    order: 0;
+    height: 100vh;
+  }
+
+  .img-container-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: fixed;
+    order: 1;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: black;
+  }
+
+  .img-container img {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+  }
+  
+  .img-container img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+  }
+
+  .img-container-2 img {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+  }
+
+  .img-container-2 img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+  }
+
+  .img-1 {
+    height: 332px;
+    width: 443px;
+    border-radius: 20px;
+    margin-right: 40px;
+    margin-bottom: 15px;
+  }
+
+  .img-2 {
+    height: 377px;
+    width: 283px;
+    border-radius: 20px;
+    margin-right: 30px;
+    margin-bottom: 40px;
+  }
+
+  .img-3 {
+    height: 350px;
+    width: auto;
+    border-radius: 20px;
+  }
+
+  .img-4 {
+    height: 350px;
+    width: 480px;
+    border-radius: 20px;
+    margin-right: 40px;
+    justify-content: flex-start;
+
+  }
+
+  .img-5 {
+    height: 255px;
+    width: 260px;
+    border-radius: 20px;
+    margin-right: 40px;
+  }
+
+  .img-6 {
+    height: auto;
+    width: 254px;
+    border-radius: 20px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 90vh;
+    right: 10vh;
+  }
+
+  
+</style>
+
+<body>
+  <div class="main-content">
+    <h1 data-end=".">CASE 1</h1>
+    <p>flex, img filter, js.</p>
+    <div class="img-animation">
+      <div id="imgContainer" class="img-container">
+        <img class="img-1" src="/case1/2.jpg" alt="">
+        <img class="img-2" src="/case1/4.jpg" alt="">
+        <img class="img-3" src="/case1/3.jpg" alt="">
+        <img class="img-4" src="/case1/night.jpg" alt="">
+        <img class="img-5" src="/case1/6.jpg" alt="">
+        <img class="img-6" src="/case1/5.jpg" alt="">
+      </div>
+      <button><img src="/case1/arrow.png" alt=""></button>
+      <div id="imgContainer2" class="img-container-2">
+        <img class="img-1" src="/case1/2.1.jpg" alt="">
+        <img class="img-2" src="/case1/2.2.jpg" alt="">
+        <img class="img-3" src="/case1/2.3.jpg" alt="">
+        <img class="img-4" src="/case1/2.4.jpg" alt="">
+        <img class="img-5" src="/case1/2.5.jpg" alt="">
+        <img class="img-6" src="/case1/2.6.jpg" alt="">
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

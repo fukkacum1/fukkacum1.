@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css">
+  <title>fukkacim1.</title>
+  <link rel="icon" href="/images/лого.png">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectElement = document.getElementById('country');
+
+      selectElement.addEventListener('change', () => {
+        if (selectElement.value) {
+          selectElement.classList.add('changed');
+        } else {
+          selectElement.classList.remove('changed');
+        }
+      });
+
+      const modal = document.getElementById('modal');
+      const openButtons = document.querySelectorAll('.open-btn');
+      const closeButton = document.querySelector('.button-close');
+      const sendButton = document.querySelector('.button-sendform');
+      openButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          modal.classList.add('show');
+        });
+      });
+
+      closeButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        modal.classList.remove('show');
+      });
+
+      sendButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        modal.classList.remove('show');
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.classList.remove('show');
+        }
+      });
+    });
+  </script>
+  <script src="/index.js"></script>
+  <style>
+    header {
+      flex: 1;
+      width: 100%;
+      height: 110px;
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: black;
+      vertical-align: top;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      flex: 1;
+      margin-right: 30px;
+    }
+
+    li,
+    a {
+      list-style-type: none;
+      margin: 5px;
+      font-family: 'sinteca';
+      color: white;
+      outline: none;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    a:hover {
+      color: blue;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: black;
+      margin: 10px;
+      padding: 20px;
+      border: 1px solid white;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      font-family: 'uncage';
+      position: relative;
+      margin: 10% auto;
+    }
+
+    .form-content-close {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+      padding: 0;
+    }
+
+    .button-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button-close img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .form-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0;
+      padding: 0;
+      width: 330px;
+    }
+
+    .p-form {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0;
+      font-size: 16px;
+      width: 325px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      margin-left: 10px;
+    }
+
+    .p-form-verticall {
+      font-family: 'sinteca';
+      writing-mode: vertical-rl;
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 400;
+      height: 350px;
+      display: inline-block;
+      width: 45px;
+      position: absolute;
+      top: 21%;
+      right: 5%;
+    }
+
+    .form-ul {
+      text-align: left;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      width: 300px;
+    }
+
+    .form-li input {
+      padding-left: 10px;
+    }
+
+
+
+    input,
+    textarea,
+    select {
+      font: 1em 'satoshi';
+      width: 280px;
+      height: 35px;
+      box-sizing: border-box;
+      border: 1px solid white;
+      background: none;
+      border-radius: 5px;
+      padding-left: 5px;
+      color: white;
+    }
+
+    select {
+      padding-left: 5px;
+      color: grey;
+    }
+
+
+    .modal.show {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .changed {
+      color: white;
+      /* Цвет после выбора */
+    }
+
+    textarea {
+      vertical-align: top;
+      height: 5em;
+    }
+
+    .button-sendform {
+      background: none;
+      color: white;
+      border: none;
+      font-family: 'uncage';
+      font-size: 32px;
+      text-align: center;
+      margin-top: 20px;
+      margin-left: 85px;
+      text-shadow: 2px 2px blue;
+      cursor: pointer;
+    }
+
+
+
+    html,
+    body {
+      background: transparent url(images/фон.jpg) no-repeat;
+      background-color: black;
+      color: white;
+      box-sizing: border-box;
+      position: fixed;
+      flex-direction: column;
+    }
+
+    .main-content {
+      height: 100vh;
+      overflow: scroll;
+      scroll-behavior: smooth;
+      scrollbar-color: inherit;
+      min-width: 15vw;
+    }
+
+    .logo {
+      width: 75px;
+      margin: 20px;
+    }
+
+    h1 {
+      font-family: 'quantum';
+      font-style: normal;
+      font-size: 50px;
+      margin: 0;
+    }
+    h2 {
+      margin: 0;
+      margin-right: 10px;
+      font-family: 'uncage';
+      color: white;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .title {
+      margin: 30px;
+      margin-top: 350px;
+      margin-bottom: 250px;
+      align-items: center;
+      flex: 1;
+      font-family: 'uncage';
+      font-size: 20px;
+    }
+
+    .about_me {
+      margin: 30px;
+      margin-top: 50px;
+      display: flex;
+      padding-top: 120px;
+    }
+
+    .about_me p {
+      margin: 0;
+      margin-right: 10px;
+      font-family: 'uncage';
+      color: white;
+    }
+
+    .about_me_2 {
+      margin-left: 30px;
+      margin-right: 30px;
+      display: flex;
+      padding-top: 120px;
+    }
+
+    .about_me_2 p {
+      margin: 0;
+      margin-left: 10px;
+      font-family: 'uncage';
+      color: white;
+    }
+
+    .line {
+      flex: 1;
+      color: white;
+    }
+
+    .about_me_content p {
+      max-width: 400px;
+      font-family: 'sinteca';
+      font-style: normal;
+      line-height: 30px;
+      font-size: 20px;
+    }
+
+    .about_me_content {
+      margin: 30px;
+      margin-top: 50px;
+
+    }
+
+    .content_front {
+      margin: 0;
+      margin-right: 30px;
+      margin-left: 30px;
+      display: flex;
+      justify-content: right;
+    }
+
+    .content_front_text {
+      font-family: 'sinteca';
+      max-width: 700px;
+      font-size: 20px;
+      text-align: end;
+    }
+
+    .p_title {
+      font-size: 40px;
+      font-style: normal;
+      font-family: 'sinteca';
+    }
+
+    .content_back {
+      margin: 0;
+      margin-left: 30px;
+      margin-right: 30px;
+      font-family: 'sinteca';
+      font-size: 20px;
+    }
+
+    .content_back p {
+      max-width: 700px;
+    }
+
+    .content_web {
+      display: inline-block;
+      margin: 0;
+      margin-top: 70px;
+      flex: 1;
+      justify-content: center;
+      background-color: black;
+    }
+
+    .cards-wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .cards-wrapper div {
+      box-shadow: 3px 3px 28px 10px rgba(0, 62, 249, 0.47);
+      padding: 10px;
+      font-family: 'sinteca';
+      margin: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-web-text1 {
+      font-family: 'sinteca';
+      font-size: 15px;
+      width: 50%;
+      padding-left: 15%;
+    }
+
+    .content-web-text2 {
+      font-family: 'sinteca';
+      font-size: 15px;
+      width: 50%;
+      text-align: end;
+      float: inline-end;
+      padding-right: 15%;
+    }
+
+    .cards-wrapper img {
+      height: 300px;
+      width: 300px;
+    }
+
+    .open-btn {
+      font-family: 'sinteca';
+      font-size: 30px;
+      background-color: black;
+      border: 0;
+      color: white;
+      display: block;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .open-btn:hover {
+      color: blue;
+    }
+
+    .web-title {
+      font-family: 'sinteca';
+      font-size: 70px;
+      width: 100vw;
+      text-align: center;
+    }
+
+    .video-1 {
+      width: 100%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+
+      header {
+        height: 70px;
+      }
+
+      .logo {
+        display: none;
+      }
+
+      nav {
+        margin-right: 10px;
+        font-size: 14px justify-content center;
+      }
+
+      li,
+      a {
+        margin: 5px 2px;
+
+      }
+
+      .title {
+        font-size: 15px;
+      }
+
+      h3 {
+        font-size: 30px;
+      }
+
+      .web-title {
+        font-size: 40px;
+      }
+
+      .p-form-verticall {
+        display: none;
+      }
+
+      .p-form {
+        font-size: 12px;
+        width: 300px;
+      }
+
+      .button-sendform {
+        margin-left: 50px;
+      }
+
+      .content_front_text {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-content">
+    <header>
+      <a href="test.html">
+        <img src="images/лого.png" alt="logo" class="logo">
+      </a>
+      <nav>
+        <li><a href="page2.html">Education</a></li>
+        <li><a href="#aboutme">About me</a></li>
+        <li><a href="#frontend">Frontend</a></li>
+        <li><a href="#backend">Backend</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#">Blog</a></li>
+      </nav>
+
+    </header>
+    <main>
+      <div class="title">
+        <h1 id="myTitle">Welcome to the website FUKKACUMI.</h1>
+        <p>RTU MIREA - group ЭФБО-06-23</p>
+      </div>
+      <script>
+        const myTitle = document.getElementById("myTitle");
+        myTitle.textContent = "Добро пожаловать на наш сайт!";</script>
+
+      <div class="about_me" id="aboutme">
+        <h2 id="myTitle2">ABOUT ME</h2>
+        <hr class="line">
+      </div>
+      <script>
+        let myTitle2 = document.getElementById("myTitle2");
+        myTitle2.style.color = "red";</script>
+
+      <div class="about_me_content">
+        <p>Anastasia Mikisheva, 19 y.o.</p>
+        <p>I am a novice web programmer and designer.
+        </p>
+      </div>
+
+      <div class="about_me_2" id="frontend">
+        <hr class="line">
+        <p>FRONTEND</p>
+      </div>
+
+      <div class="content_front">
+        <div class="content_front_text">
+          <p class="p_title">Frontend is the client side of the product. </p>
+          <p> (the interface that the user interacts with). In the case of a website, it is generated and displayed by a
+            browser that works with HTML, CSS and JavaScript.</p>
+          <p id="paragraph1">A Frontend Developer is a specialist who creates interfaces for websites and applications. Simply put, it
+            develops the appearance of Internet sites: these are pictures, drop-down lists, animations, product cards
+            and
+            everything that the user can interact with. For example, the way you see this site right now is just the
+            result of the work of our frontend developer.
+            Website visualization is a team effort between a designer and a frontend developer. The designer comes up
+            with
+            the appearance, and the developer writes the code so that the created design is displayed correctly on the
+            Internet. If you right-click on the page and select "View code", then the code that frontend wrote will
+            appear
+            on the side. But another specialist, a backend developer, is responsible for data storage, security and
+            other
+            technical functions.</p>
+        </div>
+      </div>
+      <script>
+        let paragraph1 = document.getElementById("paragraph1");
+        paragraph1.textContent = "Это новый текст параграфа.";
+      </script>
+
+
+      <div class="about_me" id="backend">
+        <p>BACKEND</p>
+        <hr class="line">
+      </div>
+
+      <div class="content_back">
+        <p class="p_title">The backend is the development of the business logic of a product.</p>
+        <p>creating an internal web application engine that processes data, manages databases, and ensures their
+          operability.</p>
+        <p> The backend is the internal part of the product, which is located on the server and hidden from users. A
+          variety of languages can be used for its development, for example, Python, PHP, Go, JavaScript, Java, C#.</p>
+      </div>
+
+      <div class="content_web">
+        <p class="web-title">Web application development.</p>
+        <div class="cards-wrapper">
+          <div>
+            <img src="images/Frame 15.jpg" alt="">
+            <button class="open-btn">order</button>
+          </div>
+          <div>
+            <img src="images/Frame 16.jpg" alt="">
+            <button class="open-btn">order</button>
+          </div>
+          <div>
+            <img src="images/Frame 17.jpg" alt="">
+            <button class="open-btn">order</button>
+          </div>
+        </div>
+        <div id="project">
+          <p class="content-web-text1">Web application development is the process of creating interactive programs that
+            run in a web browser. Web
+            applications can be simple, like single-page websites, or complex, like social networks or online stores. In
+            this article, we will look at the main stages of web application development and get acquainted with the key
+            technologies and tools that will help you create your first web application.</p>
+          <p class="content-web-text2">Web applications play an important role in the modern world by providing users
+            with access to a variety of
+            services and information over the Internet. They can be used for various purposes such as online trading,
+            social media, project management, training, and more. Web applications have a number of advantages,
+            including
+            accessibility from any device with an Internet connection, the ability to update content in real time and
+            integration with other services and platforms.</p>
+        </div>
+      </div>
+      <div id="modal" class="modal">
+        <form class="modal-content">
+          <div class="form-content-close">
+            <p class="form-title">Web application development.</p>
+            <button class="button-close"><img src="images/button-close.png" alt="button-close"></button>
+          </div>
+          <p class="p-form">Fill out the form and we will contact you as soon as possible to clarify the details.</p>
+          <p class="p-form-verticall">By submitting a request, I agree to the processing of personal data.</p>
+          <ul class="form-ul">
+            <li class="form-li">
+              <input type="text" id="name" name="user_name" placeholder="name:" autocomplete="name" required />
+            </li>
+            <li class="form-li">
+              <input type="email" id="mail" name="user_email" placeholder="email:" autocomplete="email" required />
+            </li>
+            <li class="form-li">
+              <input type="tel" id="phone" name="phone_number" placeholder="phone number:" maxlength="15"
+                autocomplete="tel" required />
+            </li>
+            <li class="form-li">
+              <select name="country" id="country" autocomplete="country">
+                <option value="">select country</option>
+                <option value="RU">Russia</option>
+                <option value="KZ">Kazakhstan</option>
+                <option value="BY">Belarus</option>
+              </select>
+            </li>
+            <li class="form-li">
+              <input lang="en"name="datepicker" type="date" placeholder="data">
+            </li>
+            <li class="form-li">
+              <textarea id="msg" name="user_message" placeholder="message:"></textarea>
+            </li>
+          </ul>
+          <button class="button-sendform" type="submit">send form</button>
+        </form>
+      </div>
+
+      <div>
+        <video class="video-1" id="video_fc" src="/copy_370FBC03-0617-4A55-86EA-65FECCDD7516.MOV" autoplay loop muted></video>
+      </div>
+      <script>
+        let video_fc = document.getElementById("video_fc");
+        video_fc.style.display = "none";
+      </script>
+    </main>
+  </div>
+
+</body>
+
+</html>
