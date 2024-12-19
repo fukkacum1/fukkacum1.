@@ -35,11 +35,6 @@
         modal.classList.remove('show');
       });
 
-      sendButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        modal.classList.remove('show');
-      });
-
       window.addEventListener('click', (event) => {
         if (event.target === modal) {
           modal.classList.remove('show');
@@ -247,6 +242,7 @@
 
     .main-content {
       height: 100vh;
+      overflow: auto;
       scroll-behavior: smooth;
       scrollbar-color: inherit;
       min-width: 15vw;
@@ -615,13 +611,13 @@
           <p class="p-form-verticall">By submitting a request, I agree to the processing of personal data.</p>
           <ul class="form-ul">
             <li class="form-li">
-              <input type="text" id="name" name="user_name" placeholder="name:" autocomplete="name" required />
+              <input type="text" id="name" name="username" placeholder="name:" autocomplete="name" required />
             </li>
             <li class="form-li">
-              <input type="email" id="mail" name="user_email" placeholder="email:" autocomplete="email" required />
+              <input type="email" id="mail" name="email" placeholder="email:" autocomplete="email" required />
             </li>
             <li class="form-li">
-              <input type="tel" id="phone" name="phone_number" placeholder="phone number:" maxlength="15"
+              <input type="tel" id="phone" name="number" placeholder="phone number:" maxlength="15"
                 autocomplete="tel" required />
             </li>
             <li class="form-li">
@@ -636,7 +632,7 @@
               <input lang="en"name="datepicker" type="date" placeholder="data">
             </li>
             <li class="form-li">
-              <textarea id="msg" name="user_message" placeholder="message:"></textarea>
+              <textarea id="msg" name="comment" placeholder="message:"></textarea>
             </li>
           </ul>
           <button class="button-sendform" type="submit">send form</button>
